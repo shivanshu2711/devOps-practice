@@ -15,7 +15,7 @@ jobs:
 
       - name: Check HTML file
         run: |
-          if grep -q "<html" index.html
+          if grep -q "<html>" index.html
           then
             echo "HTML test passed!"
           else
