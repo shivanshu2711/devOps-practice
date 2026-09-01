@@ -1,4 +1,4 @@
-name: My First GitHub Action
+name: HTML CI
 
 on:
   push:
@@ -6,9 +6,19 @@ on:
       - main
 
 jobs:
-  hello:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say Hello
-        run: echo "Hello Shivanshu! GitHub Actions is working!"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check HTML file
+        run: |
+          if grep -q "<html" index.html
+          then
+            echo "HTML test passed!"
+          else
+            echo "HTML test failed!"
+            exit 1
+          fi
