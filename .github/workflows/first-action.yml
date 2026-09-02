@@ -21,4 +21,13 @@ jobs:
           else
             echo "HTML test failed!"
             exit 1
+
+      - name: Check HTML title
+        run: |
+          if grep -q "<title>" index.html
+          then
+            echo "Title test passed!"
+          else
+            echo "Title test failed!"
+            exit 1
           fi
